@@ -1,4 +1,6 @@
 # Проект Mesto фронтенд + бэкенд
+IP 84.252.141.35
+[Ссылка на на домен](https://api.riyarmdiplom.nomoredomains.rocks/)
 [Ссылка на репозиторий](https://github.com/ri-yarm/movies-explorer-api)
 
 # Стек
