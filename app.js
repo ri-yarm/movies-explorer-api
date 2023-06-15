@@ -15,7 +15,7 @@ import centralErrors from './middlewares/centralErrors.js';
 
 dotenv.config();
 
-const { PORT, MONGODB_URI } = process.env;
+const { PORT = 3000, MONGODB_URI = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 const app = express();
 
@@ -33,9 +33,6 @@ const limiter = rateLimit({
 
 mongoose.connect(MONGODB_URI, {});
 
-/* подключаем лимитер */
-app.use(limiter);
-
 /* врубаем хелмет */
 app.use(helmet());
 
@@ -43,6 +40,9 @@ app.use(helmet());
 app.use(express.json());
 
 app.use('/', router);
+
+/* подключаем лимитер */
+app.use(limiter);
 
 /* Централлизованная обработка ошибок */
 app.use(centralErrors);
