@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
+import { SALT } from '../utils/constant.js';
 import BadReqestError from '../utils/instanceOfErrors/badRequestError.js';
 import DuplicateError from '../utils/instanceOfErrors/duplicateError.js';
 import NotFoundError from '../utils/instanceOfErrors/notFoundError.js';
@@ -28,7 +29,7 @@ export const createUser = (req, res, next) => {
     name, email, password,
   } = req.body;
 
-  bcrypt.hash(password, process.env.SALT).then((hash) => {
+  bcrypt.hash(password, SALT).then((hash) => {
     User.create({
       name,
       email,

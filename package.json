@@ -1,5 +1,5 @@
 {
-  "name": "express-mesto-gha",
+  "name": "movie",
   "version": "1.0.0",
   "description": "express server for mesto",
   "main": "app.js",
