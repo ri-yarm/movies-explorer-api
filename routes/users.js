@@ -1,8 +1,6 @@
 import express from 'express';
 
-import {
-getUserMe,updateProfile
-} from '../controllers/users.js';
+import { getUserMe, updateProfile } from '../controllers/users.js';
 import {
   updateProfileJoi,
 } from '../middlewares/celebrate.js';

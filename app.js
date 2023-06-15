@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import cors from 'cors';
 /** импорт консоли для его корректной работы  */
 import console from 'console';
-import cors from 'cors';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 /** Используем библиотеку express-rate-limit для защиты от DDoS атак */
