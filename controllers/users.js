@@ -79,8 +79,7 @@ export const login = (req, res, next) => {
         .cookie("jwt", token, {
           maxAge: 3600000,
           httpOnly: true,
-          sameSite: "none",
-          secure: false,
+          sameSite: true,
         })
         .send({ message: "Вы успешно получили куки." });
       // .send({ token });
