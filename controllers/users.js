@@ -80,7 +80,7 @@ export const login = (req, res, next) => {
           maxAge: 3600000,
           httpOnly: true,
           sameSite: "None",
-          secure: true,
+          secure: false,
         })
         .send({ message: "Вы успешно получили куки." });
       // .send({ token });

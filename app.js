@@ -24,6 +24,10 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "94.51.53.231",
+      "94.51.53.231:3000",
+      "http://94.51.53.231",
+      "http://94.51.53.231:3000",
       "https://api.riyarmdiplom.nomoredomains.rocks",
       "https://riyarmdiplom.nomoredomains.rocks",
     ],
