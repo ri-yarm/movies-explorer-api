@@ -82,7 +82,7 @@ export const login = (req, res, next) => {
           sameSite: "None",
           secure: false,
         })
-        .send({ message: "Вы успешно получили куки." });
+        .send({ message: "Вы успешно получили куки&&&&&&." });
       // .send({ token });
     })
     .catch((err) => {
