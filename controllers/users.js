@@ -75,15 +75,8 @@ export const login = (req, res, next) => {
         }
       );
 
-      // return res
-      //   .cookie("jwt", token, {
-      //     maxAge: 3600000,
-      //     httpOnly: true,
-      //     sameSite: "None",
-      //     secure: true,
-      //   })
-      //   .send({ message: "Вы успешно получили куки&&&&&&." });
-      .send({ token });
+      // .send(token);
+      return res.send({ token });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
