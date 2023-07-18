@@ -1,20 +1,26 @@
 /* eslint-disable func-names */
-import jwt from 'jsonwebtoken';
-import UnAuthorizedError from '../utils/instanceOfErrors/unAuthorizedError.js';
+import jwt from "jsonwebtoken";
+import UnAuthorizedError from "../utils/instanceOfErrors/unAuthorizedError.js";
 
 export default function (req, res, next) {
-  const cookie = req.cookies.jwt;
-  let payload;
+  const authorizationHeader = req.headers.authorization;
 
+  if (!authorizationHeader || !authorizationHeader.startsWith("Bearer ")) {
+    return next(new UnAuthorizedError("Необходима авторизация."));
+  }
+
+  const token = authorizationHeader.replace("Bearer ", "");
+
+  let payload;
   try {
     payload = jwt.verify(
-      cookie,
-      process.env.NODE_ENV === 'production'
+      token,
+      process.env.NODE_ENV === "production"
         ? process.env.JWT_SECRET
-        : 'dev-secret',
+        : "dev-secret"
     );
   } catch (err) {
-    return next(new UnAuthorizedError('Необходима авторизация.'));
+    return next(new UnAuthorizedError("Необходима авторизация."));
   }
 
   req.user = payload;
