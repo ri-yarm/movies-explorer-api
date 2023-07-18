@@ -65,8 +65,14 @@ export const login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
+      const tokenPayload = {
+        _id: user.id,
+        email: user.email,
+        name: user.name,
+      };
+
       const token = jwt.sign(
-        { _id: user.id },
+        tokenPayload,
         process.env.NODE_ENV === "production"
           ? process.env.JWT_SECRET
           : "dev-secret",
@@ -75,8 +81,7 @@ export const login = (req, res, next) => {
         }
       );
 
-      // .send(token);
-      return res.send({ token });
+      return res.send({ token, email: user.email, name: user.name });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
