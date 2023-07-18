@@ -81,7 +81,8 @@ export const login = (req, res, next) => {
         }
       );
 
-      return res.send({ token, email: user.email, name: user.name });
+      // return res.send({ token, email: user.email, name: user.name });
+      return res.send({ token });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
